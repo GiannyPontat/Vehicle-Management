@@ -16,5 +16,5 @@ public interface VehicleService {
 
     VehicleModel byId(Long id);
 
-    ResponseEntity<VehicleDto> save(VehicleDto vehicle);
+    VehicleModel save(VehicleDto vehicle);
 }

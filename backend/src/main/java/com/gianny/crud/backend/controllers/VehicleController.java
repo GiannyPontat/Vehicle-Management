@@ -31,7 +31,7 @@ public class VehicleController {
 
 
   @PostMapping("/vehicles")
-  public ResponseEntity<VehicleDto> save(@Valid @RequestBody VehicleDto vehicle){
-    return this.service.save(vehicle);
+  public VehicleDto save(@Valid @RequestBody VehicleDto vehicle){
+    return this.service.save(vehicle).dto();
   }
 }

@@ -38,7 +38,12 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
-    public ResponseEntity<VehicleDto> save(VehicleDto vehicle) {
-        return null;
+    public VehicleModel save(VehicleDto vehicle) {
+        return this.repository.saveAndFlush(VehicleModel.builder()
+                .brand(vehicle.getBrand())
+                .year(vehicle.getYear())
+                .color(vehicle.getColor())
+                .model(vehicle.getModel())
+                .build());
     }
 }
