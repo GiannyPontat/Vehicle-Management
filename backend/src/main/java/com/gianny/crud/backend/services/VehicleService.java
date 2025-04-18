@@ -17,4 +17,8 @@ public interface VehicleService {
     VehicleModel byId(Long id);
 
     VehicleModel save(VehicleDto vehicle);
+
+    void delete(Long idVehicle);
+
+    VehicleModel update(VehicleDto vehicle);
 }

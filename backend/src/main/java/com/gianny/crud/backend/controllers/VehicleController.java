@@ -17,23 +17,35 @@ import java.util.List;
 @RequestMapping(value = VehicleController.REQUEST_MAPPING_NAME, produces = "application/json; charset=UTF-8")
 public class VehicleController {
 
-  public static final String REQUEST_MAPPING_NAME = "/api/v1/vehicles";
-  private final VehicleService service;
+    public static final String REQUEST_MAPPING_NAME = "/api/v1/vehicles";
+    private final VehicleService service;
 
-  @GetMapping()
-    public ResponseEntity<List<VehicleDto>> all(){
-    return ResponseEntity.ok(service.all());
-  }
-
-
-  @GetMapping("/vehicles/{idVehicle}")
-  public ResponseEntity<VehicleDto> get(@PathVariable Long idVehicle){
-    return ResponseEntity.ok(this.service.byId(idVehicle).dto());
-  }
+    @GetMapping()
+    public ResponseEntity<List<VehicleDto>> all() {
+        return ResponseEntity.ok(service.all());
+    }
 
 
-  @PostMapping()
-  public VehicleDto save(@Valid @RequestBody VehicleDto vehicle){
-    return this.service.save(vehicle).dto();
-  }
+    @GetMapping("/{idVehicle}")
+    public ResponseEntity<VehicleDto> get(@PathVariable Long idVehicle) {
+        return ResponseEntity.ok(this.service.byId(idVehicle).dto());
+    }
+
+
+    @PostMapping()
+    public VehicleDto save(@Valid @RequestBody VehicleDto vehicle) {
+        return this.service.save(vehicle).dto();
+    }
+
+
+    @DeleteMapping("/{idVehicle}")
+    public void delete(@Valid @PathVariable("idVehicle") Long idVehicle) {
+        this.service.delete(idVehicle);
+    }
+
+
+    @PutMapping("/{idVehicle}")
+    public VehicleDto update(@Valid @RequestBody VehicleDto vehicle) {
+        return this.service.update(vehicle).dto();
+    }
 }

@@ -3,6 +3,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {VehicleDto} from "./vehicles.dto";
 import {MatIconModule} from "@angular/material/icon";
+import {VehicleService} from "./vehicle.service";
 
 @Component({
   selector: 'app-vehicle',
@@ -15,11 +16,14 @@ export class VehiclesComponent {
 
   @Input() vehicle: VehicleDto = {} as VehicleDto
 
-  onEdit(vehicle: VehicleDto) {
-
+  constructor(private service: VehicleService) {
   }
 
-  onDelete(id: number | undefined) {
+  onEdit(vehicle: VehicleDto) {
+    this.service.putUpdate(vehicle)
+  }
 
+  onDelete(vehicle: VehicleDto) {
+    this.service.delete(vehicle)
   }
 }

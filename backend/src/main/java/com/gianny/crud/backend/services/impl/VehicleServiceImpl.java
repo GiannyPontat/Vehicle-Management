@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -45,5 +46,23 @@ public class VehicleServiceImpl implements VehicleService {
                 .color(vehicle.getColor())
                 .model(vehicle.getModel())
                 .build());
+    }
+
+    @Override
+    public void delete(Long idVehicle) {
+        this.repository.deleteById(idVehicle);
+    }
+
+    @Override
+    public VehicleModel update(VehicleDto vehicle) {
+        VehicleModel model = this.repository.findById(vehicle.getId())
+                .orElseThrow(() -> new AppException("Vehicle not found", HttpStatus.NOT_FOUND));
+
+        model.setBrand(vehicle.getBrand());
+        model.setModel(vehicle.getModel());
+        model.setYear(vehicle.getYear());
+        model.setColor(vehicle.getColor());
+
+        return this.repository.save(model);
     }
 }

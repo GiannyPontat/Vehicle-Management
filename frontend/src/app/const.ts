@@ -50,6 +50,7 @@ export const URLS = {
   vehicles: {
     base: BASE.vehicles,
     vehicles: undefined,
+    id:':idVehicle'
   }
 }
 

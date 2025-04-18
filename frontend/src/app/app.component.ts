@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.vehicleService.getAll()
-    this.vehicleService.vehicles.subscribe(vehicles => this.vehicles = vehicles)
+    this.vehicleService.vehicles$.subscribe(vehicles => this.vehicles = vehicles)
   }
 
 }
