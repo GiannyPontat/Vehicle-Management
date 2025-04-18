@@ -11,6 +11,7 @@ import {AddComponent} from './vehicle/add/add.component';
 import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
     FormsModule,
     MatInputModule,
     AddComponent,
+    MatButtonModule,
 
   ],
   providers: [MatSnackBar],

@@ -4,17 +4,20 @@ import {MatCardModule} from '@angular/material/card';
 import {VehicleDto} from "./vehicles.dto";
 import {MatIconModule} from "@angular/material/icon";
 import {VehicleService} from "./vehicle.service";
+import {MatTableModule} from "@angular/material/table";
 
 @Component({
   selector: 'app-vehicle',
   templateUrl: './vehicles.component.html',
   styleUrls: ['./vehicles.component.scss'],
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatIconModule]
+  imports: [MatCardModule, MatButtonModule, MatIconModule, MatTableModule]
 })
 export class VehiclesComponent {
 
-  @Input() vehicle: VehicleDto = {} as VehicleDto
+  @Input() vehicles: VehicleDto[] = []
+  displayedColumns: string[] = ['brand', 'model', 'year', 'color', 'actions'];
+
 
   constructor(private service: VehicleService) {
   }

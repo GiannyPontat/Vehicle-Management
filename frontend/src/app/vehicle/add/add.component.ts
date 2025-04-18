@@ -7,13 +7,14 @@ import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {NgIf} from "@angular/common";
+import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss'],
   standalone: true,
-  imports: [MatInputModule, MatFormFieldModule, FormsModule, MatButtonModule, NgIf, ReactiveFormsModule]
+  imports: [MatInputModule, MatFormFieldModule, FormsModule, MatButtonModule, NgIf, ReactiveFormsModule, MatDialogModule]
 })
 export class AddComponent implements OnInit {
   vehicleForm!: FormGroup;
@@ -21,7 +22,7 @@ export class AddComponent implements OnInit {
   @ViewChild("vehicleForm") vehicle!: NgForm;
   @Output() newDataEvent = new EventEmitter();
 
-  constructor(private service: VehicleService, private fb: FormBuilder) {
+  constructor(private service: VehicleService, private fb: FormBuilder, private dialogRef: MatDialogRef<AddComponent>) {
   }
 
 
@@ -36,11 +37,12 @@ export class AddComponent implements OnInit {
 
   onSubmit(): void {
     if (this.vehicleForm.valid) {
-      const vehicle = this.vehicleForm.value;
+      const vehicle = this.vehicleForm.value
       this.service.postSave(vehicle)
-      console.log('🚗 Vehicle submitted:', vehicle);
+      console.log('🚗 Vehicle submitted:', vehicle)
+      this.dialogRef.close(this.vehicle)
     } else {
-      this.vehicleForm.markAllAsTouched();
+      this.vehicleForm.markAllAsTouched()
     }
   }
 }

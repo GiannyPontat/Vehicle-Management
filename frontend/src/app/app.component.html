@@ -1,6 +1,8 @@
 <div class="main">
-  <h1>Add Vehicle</h1>
-  <app-add></app-add>
   <h2> My vehicles</h2>
-  <app-vehicle *ngFor="let vehicle of vehicles" [vehicle]="vehicle"></app-vehicle>
+  <app-vehicle class="vehicle" [vehicles]="vehicles"></app-vehicle>
+
+  <button mat-raised-button color="primary" type="submit" (click)="openAddVehicleDialog()">
+    Add Vehicle
+  </button>
 </div>
