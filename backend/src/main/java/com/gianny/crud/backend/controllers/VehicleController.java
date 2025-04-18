@@ -32,7 +32,7 @@ public class VehicleController {
   }
 
 
-  @PostMapping("/vehicles")
+  @PostMapping()
   public VehicleDto save(@Valid @RequestBody VehicleDto vehicle){
     return this.service.save(vehicle).dto();
   }

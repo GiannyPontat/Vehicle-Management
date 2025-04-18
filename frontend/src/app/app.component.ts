@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {VehicleDto} from "./vehicle/vehicles.dto";
 import {HttpClient} from "@angular/common/http";
 import {API, URLS} from "./const";
+import {VehicleService} from "./vehicle/vehicle.service";
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,14 @@ import {API, URLS} from "./const";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-vehicles: VehicleDto[] = []
+  vehicles: VehicleDto[] = []
 
-  constructor(private http:HttpClient) {
+  constructor(private vehicleService: VehicleService) {
   }
-  //"http://localhost:8080/vehicles"
-  ngOnInit(): void{
-    this.http.get<VehicleDto[]>(API(URLS.vehicles,'vehicles'))
-      .subscribe(vehicles => this.vehicles = vehicles)
+
+  ngOnInit(): void {
+    this.vehicleService.getAll()
+    this.vehicleService.vehicles.subscribe(vehicles => this.vehicles = vehicles)
   }
+
 }
