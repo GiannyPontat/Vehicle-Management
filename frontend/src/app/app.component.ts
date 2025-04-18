@@ -9,13 +9,13 @@ import {API, URLS} from "./const";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  vehicles: VehicleDto[] = []
+vehicles: VehicleDto[] = []
 
-  constructor(private http: HttpClient) {
+  constructor(private http:HttpClient) {
   }
-
-  ngOnInit(): void {
-    this.http.get<VehicleDto[]>(API(URLS.vehicles, 'vehicles'))
+  //"http://localhost:8080/vehicles"
+  ngOnInit(): void{
+    this.http.get<VehicleDto[]>(API(URLS.vehicles,'vehicles'))
       .subscribe(vehicles => this.vehicles = vehicles)
   }
 }

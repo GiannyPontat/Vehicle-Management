@@ -14,11 +14,13 @@ import java.util.List;
 @Log4j2
 @RequiredArgsConstructor
 @RestController
+@RequestMapping(value = VehicleController.REQUEST_MAPPING_NAME, produces = "application/json; charset=UTF-8")
 public class VehicleController {
 
+  public static final String REQUEST_MAPPING_NAME = "/api/v1/vehicles";
   private final VehicleService service;
 
-  @GetMapping("/vehicles")
+  @GetMapping()
     public ResponseEntity<List<VehicleDto>> all(){
     return ResponseEntity.ok(service.all());
   }
