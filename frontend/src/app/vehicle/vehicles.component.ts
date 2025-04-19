@@ -45,7 +45,7 @@ export class VehiclesComponent {
   }
 
   openVehiclePreview(vehicle: any): void {
-    const prompt = `A zoomed out front view of a ${vehicle.color} ${vehicle.brand} ${vehicle.model}`
+    const prompt = `A photo of a ${vehicle.color} ${vehicle.brand} ${vehicle.model} parked in the street`
 
     this.imgService.getVehicleImage(prompt).subscribe(imageUrl => {
       this.dialog.open(VehiclePreviewDialogComponent, {

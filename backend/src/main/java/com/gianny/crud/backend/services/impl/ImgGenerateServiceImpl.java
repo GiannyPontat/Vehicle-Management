@@ -43,7 +43,7 @@ public class ImgGenerateServiceImpl implements ImgGenerateService {
             if (photos != null && !photos.isEmpty()) {
                 Map<String, Object> photo = photos.get(0);
                 Map<String, String> src = (Map<String, String>) photo.get("src");
-                return src.get("original"); // ou "medium", "large" selon ton besoin
+                return src.get("medium"); // ou "medium", "large" selon ton besoin
             } else {
                 throw new RuntimeException("No image found for query: " + query);
             }
