@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01a41d22-0339-459f-a9b4-0f0cc533d87b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/gianny/crud/backend/services/impl/ImgGenerateServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/gianny/crud/backend/services/impl/ImgGenerateServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/vehicle/vehicles.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/vehicle/vehicles.component.ts" afterDir="false" />
-    </list>
+    <list default="true" id="01a41d22-0339-459f-a9b4-0f0cc533d87b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,7 +73,7 @@
       <workItem from="1734175484400" duration="2119000" />
       <workItem from="1744895582693" duration="82000" />
       <workItem from="1744898561852" duration="214000" />
-      <workItem from="1745089933659" duration="320000" />
+      <workItem from="1745089933659" duration="580000" />
     </task>
     <servers />
   </component>
