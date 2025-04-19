@@ -42,6 +42,7 @@ export const STORAGE = {
 
 const BASE = {
   vehicles: 'vehicles',
+  imgs: 'imgs'
 }
 
 
@@ -51,6 +52,11 @@ export const URLS = {
     base: BASE.vehicles,
     vehicles: undefined,
     id:':idVehicle'
+  },
+  imgs: {
+    base: BASE.imgs,
+    imgs: undefined,
+    id:':idImg'
   }
 }
 

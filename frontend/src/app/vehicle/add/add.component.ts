@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Inject, OnInit, Output, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {VehicleService} from "../vehicle.service";
@@ -7,7 +7,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {NgIf} from "@angular/common";
-import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-add',
@@ -17,30 +17,33 @@ import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
   imports: [MatInputModule, MatFormFieldModule, FormsModule, MatButtonModule, NgIf, ReactiveFormsModule, MatDialogModule]
 })
 export class AddComponent implements OnInit {
-  vehicleForm!: FormGroup;
+  vehicleForm!: FormGroup
+  mode: 'add' | 'edit' = 'add'
+  vehicleData: VehicleDto = {} as VehicleDto
 
   @ViewChild("vehicleForm") vehicle!: NgForm;
-  @Output() newDataEvent = new EventEmitter();
+  @Output() newDataEvent = new EventEmitter()
 
-  constructor(private service: VehicleService, private fb: FormBuilder, private dialogRef: MatDialogRef<AddComponent>) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private service: VehicleService, private fb: FormBuilder, private dialogRef: MatDialogRef<AddComponent>) {
+    this.mode = this.data.mode
   }
 
 
   ngOnInit(): void {
+    this.vehicleData = this.data.vehicle
     this.vehicleForm = this.fb.group({
-      brand: ['', Validators.required],
-      model: ['', Validators.required],
-      year: [new Date().getFullYear(), [Validators.required, Validators.min(1950), Validators.max(2030)]],
-      color: ['', Validators.required]
-    });
+      brand: [this.vehicleData ? this.vehicleData.brand : '', Validators.required],
+      model: [this.vehicleData ? this.vehicleData.model : '', Validators.required],
+      year: [this.vehicleData ? this.vehicleData.year : new Date().getFullYear(), [Validators.required, Validators.min(1950), Validators.max(2030)]],
+      color: [this.vehicleData ? this.vehicleData.color : '', Validators.required]
+    })
   }
 
   onSubmit(): void {
     if (this.vehicleForm.valid) {
       const vehicle = this.vehicleForm.value
-      this.service.postSave(vehicle)
-      console.log('🚗 Vehicle submitted:', vehicle)
-      this.dialogRef.close(this.vehicle)
+      if (this.vehicleData && this.vehicleData.id) vehicle.id = this.vehicleData.id
+      this.dialogRef.close(vehicle)
     } else {
       this.vehicleForm.markAllAsTouched()
     }

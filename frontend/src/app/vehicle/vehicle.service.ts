@@ -35,20 +35,22 @@ export class VehicleService {
         next: (newVehicle) => {
           const updatedVehicles = [...this.vehicles$.value, newVehicle]
           this.vehicles$.next(updatedVehicles)
-          this.snackBar.open('Véhicule ajouté avec succès', 'OK')
+          this.snackBar.open('Véhicule ajouté avec succès', 'OK', {duration: 3000})
         },
         error: (error) => {
           console.error(error)
-          this.snackBar.open('Une erreur est survenue lors de l\'ajout', 'OK')
+          this.snackBar.open('Une erreur est survenue lors de l\'ajout', 'OK', {duration: 3000})
         }
       });
   }
 
   putUpdate(vehicle: VehicleDto): void {
-    this.http.put<VehicleDto>(API_VARS(URLS.vehicles, 'id', vehicle.id), vehicle)
+    this.ids.set('idVehicle',vehicle.id)
+    this.http.put<VehicleDto>(API_VARS(URLS.vehicles, 'id', this.ids), vehicle)
       .subscribe({
         next: () => {
-          this.snackBar.open(`Update terminé`, 'OK')
+          this.getAll()
+          this.snackBar.open(`Update terminé`, 'OK', {duration: 3000})
         },
         error: (error) => {
           console.error(error)
@@ -63,9 +65,8 @@ export class VehicleService {
     this.http.delete(API_VARS(URLS.vehicles, 'id', this.ids))
       .subscribe({
         next: () => {
-          this.vehicles$.next([])
           this.getAll()
-          this.snackBar.open(`Vehicule supprimé`, 'OK')
+          this.snackBar.open(`Vehicule supprimé`, 'OK', {duration: 3000})
         },
         error: (error) => {
           console.error(error)

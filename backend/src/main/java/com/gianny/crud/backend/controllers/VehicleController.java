@@ -45,7 +45,7 @@ public class VehicleController {
 
 
     @PutMapping("/{idVehicle}")
-    public VehicleDto update(@Valid @RequestBody VehicleDto vehicle) {
+    public VehicleDto update(@Valid @RequestBody VehicleDto vehicle ) {
         return this.service.update(vehicle).dto();
     }
 }

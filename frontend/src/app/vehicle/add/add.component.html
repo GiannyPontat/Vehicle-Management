@@ -1,36 +1,36 @@
-<h1 mat-dialog-title>Add Vehicle</h1>
+<h1 mat-dialog-title> {{ mode == 'add' ? 'Add Vehicle' : 'Update Vehicle' }}</h1>
 <mat-dialog-content>
-<form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()" class="vehicle-form">
+  <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()" class="vehicle-form">
 
-  <mat-form-field class="vehicule-width" appearance="outline">
-    <mat-label>Brand</mat-label>
-    <input matInput formControlName="brand"/>
-    <mat-error *ngIf="vehicleForm.get('brand')?.hasError('required')">Brand is required</mat-error>
-  </mat-form-field>
+    <mat-form-field class="vehicule-width" appearance="outline">
+      <mat-label>Brand</mat-label>
+      <input matInput formControlName="brand"/>
+      <mat-error *ngIf="vehicleForm.get('brand')?.hasError('required')">Brand is required</mat-error>
+    </mat-form-field>
 
-  <mat-form-field class="vehicule-width" appearance="outline">
-    <mat-label>Model</mat-label>
-    <input matInput formControlName="model"/>
-    <mat-error *ngIf="vehicleForm.get('model')?.hasError('required')">Model is required</mat-error>
-  </mat-form-field>
+    <mat-form-field class="vehicule-width" appearance="outline">
+      <mat-label>Model</mat-label>
+      <input matInput formControlName="model"/>
+      <mat-error *ngIf="vehicleForm.get('model')?.hasError('required')">Model is required</mat-error>
+    </mat-form-field>
 
-  <mat-form-field class="vehicule-width" appearance="outline">
-    <mat-label>Year</mat-label>
-    <input matInput type="number" formControlName="year"/>
-    <mat-error *ngIf="vehicleForm.get('year')?.hasError('required')">Year is required</mat-error>
-    <mat-error *ngIf="vehicleForm.get('year')?.hasError('min')">Too old 😅</mat-error>
-    <mat-error *ngIf="vehicleForm.get('year')?.hasError('max')">Future car ?</mat-error>
-  </mat-form-field>
+    <mat-form-field class="vehicule-width" appearance="outline">
+      <mat-label>Year</mat-label>
+      <input matInput type="number" formControlName="year"/>
+      <mat-error *ngIf="vehicleForm.get('year')?.hasError('required')">Year is required</mat-error>
+      <mat-error *ngIf="vehicleForm.get('year')?.hasError('min')">Too old 😅</mat-error>
+      <mat-error *ngIf="vehicleForm.get('year')?.hasError('max')">Future car ?</mat-error>
+    </mat-form-field>
 
-  <mat-form-field class="vehicule-width" appearance="outline">
-    <mat-label>Color</mat-label>
-    <input matInput formControlName="color"/>
-    <mat-error *ngIf="vehicleForm.get('color')?.hasError('required')">Color is required</mat-error>
-  </mat-form-field>
+    <mat-form-field class="vehicule-width" appearance="outline">
+      <mat-label>Color</mat-label>
+      <input matInput formControlName="color"/>
+      <mat-error *ngIf="vehicleForm.get('color')?.hasError('required')">Color is required</mat-error>
+    </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit" [disabled]="vehicleForm.invalid">
-    Add Vehicle
-  </button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="vehicleForm.invalid">
+      {{ mode == 'add' ? 'Add Vehicle' : 'Update Vehicle' }}
+    </button>
 
-</form>
+  </form>
 </mat-dialog-content>

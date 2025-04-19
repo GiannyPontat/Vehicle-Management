@@ -8,3 +8,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: 'update'
+
+pexels:
+  api:
+    key: fpApqeyniphaDS4bR3uXTHECP3mnD07NiaXXHSfcl5XdAG6K99RuSXZQ

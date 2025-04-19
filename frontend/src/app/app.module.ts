@@ -12,10 +12,12 @@ import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatButtonModule} from "@angular/material/button";
+import { VehiclePreviewDialogComponent } from './vehicle-preview-dialog/vehicle-preview-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    VehiclePreviewDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -25,14 +25,14 @@ export class AppComponent implements OnInit {
   openAddVehicleDialog(): void {
     const dialogRef = this.dialog.open(AddComponent, {
       width: '400px',
-    });
+      data: { mode: 'add' }
+    })
 
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this.vehicleService.postSave(result)
       }
-      console.log('The dialog was closed', result);
-    });
+    })
   }
 
 }
